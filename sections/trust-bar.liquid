@@ -1,0 +1,66 @@
+<section style="padding:40px 0;background:{{ section.settings.bg_color }};">
+  <div class="container">
+    <div class="animate-stagger" style="display:grid;grid-template-columns:repeat(2, 1fr);gap:16px;text-align:center;">
+      {%- for block in section.blocks -%}
+        <div>
+          <div style="font-size:24px;margin-bottom:8px;">{{ block.settings.icon }}</div>
+          <p style="font-family:var(--font-heading);font-weight:600;font-size:12px;color:var(--color-text);">{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <style>
+    @media (min-width: 768px) {
+      #shopify-section-{{ section.id }} .animate-stagger { grid-template-columns: repeat({{ section.blocks.size }}, 1fr) !important; gap: 24px !important; }
+      #shopify-section-{{ section.id }} div[style*="font-size:24px"] { font-size: 32px !important; margin-bottom: 12px !important; }
+      #shopify-section-{{ section.id }} p { font-size: 14px !important; }
+      #shopify-section-{{ section.id }} > section { padding: 56px 0 !important; }
+    }
+  </style>
+</section>
+
+{% schema %}
+{
+  "name": "Trust Bar",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FFF0E0"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Trust Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Emoji icon",
+          "default": "🚚"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Free Worldwide Shipping"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Bar",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "🚚", "text": "Free Worldwide Shipping" } },
+        { "type": "item", "settings": { "icon": "🛡️", "text": "Pet-Safe Materials" } },
+        { "type": "item", "settings": { "icon": "✅", "text": "Satisfaction Guarantee" } },
+        { "type": "item", "settings": { "icon": "💛", "text": "Thousands of Happy Dogs" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

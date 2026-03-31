@@ -1,0 +1,127 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-playground",
+      "settings": {
+        "badge_text": "🎉 50% OFF — Flash Sale",
+        "heading": "Happy Dogs Start Here.",
+        "description": "Interactive enrichment toys that turn boredom into playtime. Puzzles, lick mats, and treat toys that keep tails wagging.",
+        "button_text": "Explore Products",
+        "button_link": "/collections/all",
+        "secondary_text": "How It Works",
+        "secondary_link": "#shopify-section-how-it-works"
+      },
+      "blocks": {
+        "image_1": { "type": "hero_image", "settings": { "size": 50, "position": "top:5%;left:5%", "rotation": -6 } },
+        "image_2": { "type": "hero_image", "settings": { "size": 40, "position": "top:25%;right:5%", "rotation": 3 } },
+        "image_3": { "type": "hero_image", "settings": { "size": 35, "position": "bottom:5%;left:15%", "rotation": -3 } }
+      ],
+      "block_order": ["image_1", "image_2", "image_3"]
+    },
+    "marquee": {
+      "type": "marquee",
+      "settings": {
+        "bg_color": "#1B4965",
+        "text_color": "#ffffff",
+        "font_size": 15
+      },
+      "blocks": {
+        "m1": { "type": "item", "settings": { "text": "🐾 ENRICHMENT TOYS" } },
+        "m2": { "type": "item", "settings": { "text": "LICK MATS" } },
+        "m3": { "type": "item", "settings": { "text": "PUZZLE FEEDERS" } },
+        "m4": { "type": "item", "settings": { "text": "SMART TOYS" } },
+        "m5": { "type": "item", "settings": { "text": "HIP & JOINT" } },
+        "m6": { "type": "item", "settings": { "text": "FREE SHIPPING" } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4", "m5", "m6"]
+    },
+    "problem": {
+      "type": "problem-solution",
+      "settings": {
+        "heading": "When Dogs Get Bored, Problems Begin.",
+        "description": "Chewed shoes. Endless barking. Separation anxiety. Your dog isn't bad — they're bored. Barktopia enrichment toys fix that.",
+        "bg_color": "#FF6B35",
+        "text_color": "#ffffff"
+      },
+      "blocks": {
+        "c1": { "type": "card", "settings": { "icon": "🧠", "title": "Mental Stimulation", "description": "Puzzles and foraging toys that challenge their brain and reward curiosity." } },
+        "c2": { "type": "card", "settings": { "icon": "🍽️", "title": "Slower Eating", "description": "Lick mats and puzzle feeders turn 30-second meals into 15-minute activities." } },
+        "c3": { "type": "card", "settings": { "icon": "😌", "title": "Calmer Behavior", "description": "An enriched dog is a happy, calm dog. Less barking, less chewing, less anxiety." } }
+      },
+      "block_order": ["c1", "c2", "c3"]
+    },
+    "products": {
+      "type": "featured-products",
+      "settings": {
+        "badge_text": "🔥 Best Sellers",
+        "heading": "Toys They'll Obsess Over",
+        "products_count": 7,
+        "view_all_text": "View All",
+        "view_all_link": "/collections/all",
+        "show_cta_card": true,
+        "cta_heading": "Want them all?",
+        "cta_description": "Bundles & deals in store",
+        "cta_button": "Shop All",
+        "cta_link": "/collections/all"
+      }
+    },
+    "how-it-works": {
+      "type": "how-it-works",
+      "settings": {
+        "heading": "Easy as 1, 2, 3",
+        "bg_color": "#1B4965",
+        "text_color": "#ffffff",
+        "accent_color": "#FFD166"
+      },
+      "blocks": {
+        "s1": { "type": "step", "settings": { "title": "Pick a Toy", "description": "Choose from puzzles, lick mats, foragers, or interactive balls. Every dog has a favourite." } },
+        "s2": { "type": "step", "settings": { "title": "Fill with Treats", "description": "Add their favourite snacks, kibble, or spreads. The toy does the rest — turning treats into a challenge." } },
+        "s3": { "type": "step", "settings": { "title": "Watch Them Thrive", "description": "Enriched dogs are happier, calmer, and healthier. You'll see the difference in days." } }
+      },
+      "block_order": ["s1", "s2", "s3"]
+    },
+    "supplement": {
+      "type": "supplement-feature",
+      "settings": {
+        "badge_text": "🏥 Vet Formulated",
+        "heading": "Morning Hip + Joint Chews",
+        "description": "100 chewable supplements formulated to support your dog's hip and joint health. Easy to give, delicious to eat, and they'll think it's a treat.",
+        "button_text": "Shop Now — $39.90",
+        "button_link": "/collections/all",
+        "compare_price": "$49.90",
+        "bg_color": "#E8FFF6",
+        "accent_color": "#06D6A0",
+        "show_stats": true
+      },
+      "blocks": {
+        "st1": { "type": "stat", "settings": { "value": "100", "label": "Chews / Jar" } },
+        "st2": { "type": "stat", "settings": { "value": "Hip", "label": "& Joint Support" } },
+        "st3": { "type": "stat", "settings": { "value": "Safe", "label": "Non-Toxic" } }
+      },
+      "block_order": ["st1", "st2", "st3"]
+    },
+    "trust": {
+      "type": "trust-bar",
+      "settings": { "bg_color": "#FFF0E0" },
+      "blocks": {
+        "t1": { "type": "item", "settings": { "icon": "🚚", "text": "Free Worldwide Shipping" } },
+        "t2": { "type": "item", "settings": { "icon": "🛡️", "text": "Pet-Safe Materials" } },
+        "t3": { "type": "item", "settings": { "icon": "✅", "text": "Satisfaction Guarantee" } },
+        "t4": { "type": "item", "settings": { "icon": "💛", "text": "Thousands of Happy Dogs" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"]
+    },
+    "cta": {
+      "type": "cta-banner",
+      "settings": {
+        "heading": "Your Dog's New Favorite Toy Is One Click Away",
+        "description": "Free shipping. Safe materials. Happy tails guaranteed.",
+        "button_text": "Explore Barktopia",
+        "button_link": "/collections/all",
+        "bg_color": "#FF6B35",
+        "text_color": "#ffffff"
+      }
+    }
+  },
+  "order": ["hero", "marquee", "problem", "products", "how-it-works", "supplement", "trust", "cta"]
+}

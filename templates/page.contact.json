@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Get in Touch",
+        "description": "Have a question about our products? We'd love to hear from you."
+      }
+    }
+  },
+  "order": ["main"]
+}

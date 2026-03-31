@@ -1,0 +1,56 @@
+<section class="section-padding" style="padding-top:100px;">
+  <div class="container" style="max-width:800px;">
+    <h1 class="heading-lg" style="text-align:center;margin-bottom:40px;">{{ 'cart.general.title' | t }}</h1>
+
+    {%- if cart.items.size > 0 -%}
+      <form action="/cart" method="post">
+        {%- for item in cart.items -%}
+          <div class="cart-item" style="display:flex;gap:16px;padding:20px 0;border-bottom:2px solid rgba(26,26,46,0.06);">
+            <a href="{{ item.url }}" style="width:100px;height:100px;flex-shrink:0;background:var(--color-bg-alt);border-radius:16px;overflow:hidden;">
+              {%- if item.image -%}
+                <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}" style="width:100%;height:100%;object-fit:contain;padding:8px;" loading="lazy">
+              {%- endif -%}
+            </a>
+            <div style="flex:1;">
+              <a href="{{ item.url }}" style="font-family:var(--font-heading);font-weight:600;font-size:16px;display:block;margin-bottom:4px;">{{ item.product.title }}</a>
+              {%- if item.variant.title != 'Default Title' -%}
+                <p class="text-sm text-muted">{{ item.variant.title }}</p>
+              {%- endif -%}
+              <p style="font-family:var(--font-heading);font-weight:700;color:var(--color-primary);margin-top:4px;">{{ item.final_line_price | money }}</p>
+              <div style="display:flex;align-items:center;gap:12px;margin-top:12px;">
+                <a href="/cart/change?id={{ item.key }}&quantity={{ item.quantity | minus: 1 }}" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:2px solid rgba(26,26,46,0.1);font-weight:700;">−</a>
+                <span style="font-weight:600;">{{ item.quantity }}</span>
+                <a href="/cart/change?id={{ item.key }}&quantity={{ item.quantity | plus: 1 }}" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:2px solid rgba(26,26,46,0.1);font-weight:700;">+</a>
+                <a href="/cart/change?id={{ item.key }}&quantity=0" style="margin-left:auto;font-size:13px;color:var(--color-text-muted);text-decoration:underline;">{{ 'cart.general.remove' | t }}</a>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-top:2px solid rgba(26,26,46,0.06);margin-top:8px;">
+          <span style="font-family:var(--font-heading);font-weight:700;font-size:20px;">{{ 'cart.general.subtotal' | t }}</span>
+          <span style="font-family:var(--font-heading);font-weight:700;font-size:24px;color:var(--color-primary);">{{ cart.total_price | money }}</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px;align-items:center;">
+          <a href="/checkout" class="btn btn--primary" style="width:100%;max-width:400px;">{{ 'cart.general.checkout' | t }}</a>
+          <a href="/collections/all" class="btn btn--ghost btn--sm">{{ 'cart.general.continue_shopping' | t }}</a>
+        </div>
+      </form>
+    {%- else -%}
+      <div style="text-align:center;padding:60px 20px;">
+        <p style="font-size:64px;margin-bottom:16px;">🛒</p>
+        <p style="font-family:var(--font-heading);font-size:20px;margin-bottom:24px;color:var(--color-text-muted);">{{ 'cart.general.empty' | t }}</p>
+        <a href="/collections/all" class="btn btn--primary">{{ 'cart.general.continue_shopping' | t }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart Page",
+  "tag": "div",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,66 @@
+{
+  "general": {
+    "password_page": {
+      "login_form_heading": "Enter store using password:",
+      "login_password_button": "Enter using password",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_error": "Wrong password!",
+      "login_form_submit": "Enter",
+      "modal": "Password modal",
+      "powered_by_shopify_html": "This shop will be powered by {{ shopify }}"
+    }
+  },
+  "accessibility": {
+    "skip_to_text": "Skip to content",
+    "close": "Close",
+    "menu": "Menu"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "on_sale": "Sale",
+      "quantity": "Quantity",
+      "description": "Description",
+      "price": {
+        "from_price_html": "From {{ price }}",
+        "regular_price": "Regular price",
+        "sale_price": "Sale price",
+        "unit_price": "Unit price"
+      }
+    }
+  },
+  "collections": {
+    "general": {
+      "all_products": "All Products",
+      "no_matches": "No products match your search.",
+      "items_count": "{{ count }} products"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your Cart",
+      "empty": "Your cart is empty",
+      "continue_shopping": "Continue Shopping",
+      "subtotal": "Subtotal",
+      "checkout": "Checkout",
+      "remove": "Remove",
+      "note": "Order notes"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send Message",
+      "post_success": "Thanks for contacting us! We'll get back to you as soon as possible."
+    }
+  },
+  "404": {
+    "title": "Oops! Page not found",
+    "subtext": "Looks like this page ran away to chase a squirrel.",
+    "button": "Back to Home"
+  }
+}

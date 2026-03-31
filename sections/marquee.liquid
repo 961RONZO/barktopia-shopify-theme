@@ -1,0 +1,67 @@
+<section class="marquee" style="padding:12px 0;background:{{ section.settings.bg_color }};overflow:hidden;">
+  <div class="marquee__track" style="color:{{ section.settings.text_color }};">
+    {%- for i in (1..2) -%}
+      {%- for block in section.blocks -%}
+        <span class="marquee__item" style="font-size:{{ section.settings.font_size }}px;">{{ block.settings.text }}</span>
+        <span class="marquee__item" style="opacity:0.5;">•</span>
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Marquee Strip",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#1B4965"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Marquee Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "🐾 ENRICHMENT TOYS"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee Strip",
+      "blocks": [
+        { "type": "item", "settings": { "text": "🐾 ENRICHMENT TOYS" } },
+        { "type": "item", "settings": { "text": "LICK MATS" } },
+        { "type": "item", "settings": { "text": "PUZZLE FEEDERS" } },
+        { "type": "item", "settings": { "text": "SMART TOYS" } },
+        { "type": "item", "settings": { "text": "HIP & JOINT" } },
+        { "type": "item", "settings": { "text": "FREE SHIPPING" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

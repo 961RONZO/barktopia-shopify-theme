@@ -1,0 +1,108 @@
+<section class="product-page section-padding">
+  <div class="container">
+    <div class="product-page__grid">
+      <!-- Gallery -->
+      <div class="product-page__gallery">
+        <div class="product-page__main-image">
+          <img
+            src="{{ product.featured_image | image_url: width: 1200 }}"
+            alt="{{ product.featured_image.alt | default: product.title | escape }}"
+            id="mainProductImage"
+            loading="eager"
+          >
+        </div>
+
+        {%- if product.images.size > 1 -%}
+          <div class="product-page__thumbnails">
+            {%- for image in product.images -%}
+              <button
+                class="product-page__thumb {% if forloop.first %}product-page__thumb--active{% endif %}"
+                data-full-image="{{ image | image_url: width: 1200 }}"
+                aria-label="View image {{ forloop.index }}"
+              >
+                <img src="{{ image | image_url: width: 150 }}" alt="{{ image.alt | escape }}" loading="lazy">
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Product Info -->
+      <div class="product-page__info">
+        <p class="product-page__vendor">{{ product.vendor }}</p>
+        <h1 class="product-page__title">{{ product.title }}</h1>
+
+        <div class="product-page__price-row">
+          <span class="product-page__price">{{ product.selected_or_first_available_variant.price | money }}</span>
+          {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+            <span class="product-page__compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
+            <span class="sticker sticker--sm">
+              {{ product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | times: 100 | divided_by: product.selected_or_first_available_variant.compare_at_price }}% OFF
+            </span>
+          {%- endif -%}
+        </div>
+
+        {%- if product.description != blank -%}
+          <div class="product-page__desc">{{ product.description }}</div>
+        {%- endif -%}
+
+        <!-- Variant selector -->
+        {%- if product.variants.size > 1 -%}
+          <div class="product-page__variants">
+            {%- for option in product.options_with_values -%}
+              <p class="product-page__variant-label">{{ option.name }}</p>
+              <div class="product-page__variant-options">
+                {%- for value in option.values -%}
+                  {%- assign variant = product.variants | where: 'title', value | first -%}
+                  <button
+                    class="product-page__variant-btn {% if forloop.first %}product-page__variant-btn--selected{% endif %}"
+                    data-variant-id="{{ variant.id | default: product.selected_or_first_available_variant.id }}"
+                    data-price="{{ variant.price | default: product.price }}"
+                    data-compare-price="{{ variant.compare_at_price }}"
+                    {%- if variant.featured_image -%}data-image="{{ variant.featured_image | image_url: width: 1200 }}"{% endif %}
+                  >
+                    {{ value }}
+                  </button>
+                {%- endfor -%}
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <!-- Add to Cart Form -->
+        <form data-add-to-cart-form action="/cart/add" method="post">
+          <input type="hidden" name="id" id="variant-id" value="{{ product.selected_or_first_available_variant.id }}">
+          <input type="hidden" name="quantity" value="1">
+
+          <button
+            type="submit"
+            class="btn btn--primary product-page__add-to-cart"
+            {% unless product.available %}disabled{% endunless %}
+          >
+            {%- if product.available -%}
+              {{ 'products.product.add_to_cart' | t }}
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            {%- else -%}
+              {{ 'products.product.sold_out' | t }}
+            {%- endif -%}
+          </button>
+        </form>
+
+        <!-- Guarantees -->
+        <div class="product-page__guarantees">
+          <div class="product-page__guarantee">🚚 Free shipping</div>
+          <div class="product-page__guarantee">🛡️ Pet-safe materials</div>
+          <div class="product-page__guarantee">✅ Satisfaction guarantee</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Page",
+  "tag": "div",
+  "settings": []
+}
+{% endschema %}

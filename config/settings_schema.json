@@ -1,0 +1,197 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Barktopia Playground",
+    "theme_version": "1.0.0",
+    "theme_author": "Frontend Studio",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Primary colors"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary (Orange)",
+        "default": "#FF6B35"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary (Teal)",
+        "default": "#1B4965"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent (Yellow)",
+        "default": "#FFD166"
+      },
+      {
+        "type": "color",
+        "id": "color_mint",
+        "label": "Mint (Health)",
+        "default": "#06D6A0"
+      },
+      {
+        "type": "header",
+        "content": "Backgrounds"
+      },
+      {
+        "type": "color",
+        "id": "color_bg_primary",
+        "label": "Background primary",
+        "default": "#FFF8F0"
+      },
+      {
+        "type": "color",
+        "id": "color_bg_secondary",
+        "label": "Background secondary (Peach)",
+        "default": "#FFF0E0"
+      },
+      {
+        "type": "header",
+        "content": "Text"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text dark",
+        "default": "#1A1A2E"
+      },
+      {
+        "type": "color",
+        "id": "color_text_muted",
+        "label": "Text muted",
+        "default": "#5C5C7A"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "select",
+        "id": "heading_font",
+        "label": "Heading font",
+        "options": [
+          { "value": "Fredoka", "label": "Fredoka (default)" },
+          { "value": "Nunito", "label": "Nunito" }
+        ],
+        "default": "Fredoka"
+      },
+      {
+        "type": "select",
+        "id": "body_font",
+        "label": "Body font",
+        "options": [
+          { "value": "Nunito", "label": "Nunito (default)" },
+          { "value": "Fredoka", "label": "Fredoka" }
+        ],
+        "default": "Nunito"
+      },
+      {
+        "type": "range",
+        "id": "heading_scale",
+        "label": "Heading size scale",
+        "min": 80,
+        "max": 130,
+        "step": 5,
+        "unit": "%",
+        "default": 100
+      },
+      {
+        "type": "range",
+        "id": "body_size",
+        "label": "Body text size",
+        "min": 14,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "max_width",
+        "label": "Max page width",
+        "min": 1000,
+        "max": 1600,
+        "step": 40,
+        "unit": "px",
+        "default": 1280
+      },
+      {
+        "type": "range",
+        "id": "border_radius",
+        "label": "Card border radius",
+        "min": 0,
+        "max": 32,
+        "step": 4,
+        "unit": "px",
+        "default": 20
+      },
+      {
+        "type": "checkbox",
+        "id": "show_scroll_progress",
+        "label": "Show scroll progress bar",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Cart type",
+        "options": [
+          { "value": "drawer", "label": "Drawer (slide-out)" },
+          { "value": "page", "label": "Cart page" }
+        ],
+        "default": "drawer"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram handle",
+        "placeholder": "@barktopia"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "TikTok URL"
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
+    ]
+  }
+]

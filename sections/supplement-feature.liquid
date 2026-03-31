@@ -1,0 +1,155 @@
+<section class="section-padding" style="background:var(--color-bg);">
+  <div class="container">
+    <div class="animate-fade-up" style="background:{{ section.settings.bg_color }};border-radius:24px;padding:24px;display:grid;grid-template-columns:1fr;gap:32px;align-items:center;">
+      <!-- Info -->
+      <div>
+        {%- if section.settings.badge_text != blank -%}
+          <span class="sticker" style="background:{{ section.settings.accent_color }};margin-bottom:16px;display:inline-block;">{{ section.settings.badge_text }}</span>
+        {%- endif -%}
+
+        <h2 class="heading-md animate-title" style="margin-bottom:16px;">{{ section.settings.heading }}</h2>
+        <p style="color:var(--color-text-muted);line-height:1.7;margin-bottom:20px;max-width:500px;">{{ section.settings.description }}</p>
+
+        {%- if section.settings.show_stats -%}
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:24px;">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'stat' -%}
+                <div style="background:#fff;border-radius:16px;padding:10px 16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                  <p style="font-family:var(--font-heading);font-weight:700;font-size:20px;color:{{ section.settings.accent_color }};">{{ block.settings.value }}</p>
+                  <p style="font-size:10px;color:var(--color-text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">{{ block.settings.label }}</p>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <div style="display:flex;align-items:center;gap:12px;">
+          {%- if section.settings.button_text != blank -%}
+            <a href="{{ section.settings.button_link }}" class="btn" style="background:{{ section.settings.accent_color }};color:var(--color-text);">{{ section.settings.button_text }}</a>
+          {%- endif -%}
+          {%- if section.settings.compare_price != blank -%}
+            <span style="font-size:14px;color:var(--color-text-muted);text-decoration:line-through;opacity:0.5;">{{ section.settings.compare_price }}</span>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Image -->
+      {%- if section.settings.image != blank -%}
+        <div style="display:flex;justify-content:center;" class="float-med">
+          <img
+            src="{{ section.settings.image | image_url: width: 800 }}"
+            alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}"
+            style="width:100%;max-width:350px;border-radius:var(--radius);box-shadow:0 12px 40px rgba(0,0,0,0.1);"
+            loading="lazy"
+          >
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <style>
+    @media (min-width: 768px) {
+      #shopify-section-{{ section.id }} .animate-fade-up > div:first-child + div + div,
+      #shopify-section-{{ section.id }} .animate-fade-up {
+        padding: 64px !important;
+        grid-template-columns: 1fr 1fr !important;
+      }
+    }
+  </style>
+</section>
+
+{% schema %}
+{
+  "name": "Supplement Feature",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "🏥 Vet Formulated"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Morning Hip + Joint Chews"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "100 chewable supplements formulated to support your dog's hip and joint health. Easy to give, delicious to eat, and they'll think it's a treat."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Shop Now — $39.90"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "compare_price",
+      "label": "Compare price text",
+      "default": "$49.90"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Block background",
+      "default": "#E8FFF6"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#06D6A0"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stats",
+      "label": "Show stat blocks",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "100"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Chews / Jar"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Supplement Feature",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "100", "label": "Chews / Jar" } },
+        { "type": "stat", "settings": { "value": "Hip", "label": "& Joint Support" } },
+        { "type": "stat", "settings": { "value": "Safe", "label": "Non-Toxic" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

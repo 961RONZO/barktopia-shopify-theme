@@ -1,0 +1,21 @@
+{
+  "current": {
+    "color_primary": "#FF6B35",
+    "color_secondary": "#1B4965",
+    "color_accent": "#FFD166",
+    "color_mint": "#06D6A0",
+    "color_bg_primary": "#FFF8F0",
+    "color_bg_secondary": "#FFF0E0",
+    "color_text": "#1A1A2E",
+    "color_text_muted": "#5C5C7A",
+    "heading_font": "Fredoka",
+    "body_font": "Nunito",
+    "heading_scale": 100,
+    "body_size": 16,
+    "max_width": 1280,
+    "border_radius": 20,
+    "show_scroll_progress": true,
+    "cart_type": "drawer",
+    "social_instagram": "@barktopia"
+  }
+}

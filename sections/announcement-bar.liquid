@@ -1,0 +1,44 @@
+{%- if section.settings.show_announcement -%}
+  <div class="announcement-bar" style="background:{{ section.settings.bg_color }};color:{{ section.settings.text_color }};">
+    <a href="{{ section.settings.link }}" {% if section.settings.link != blank %}target="_blank"{% endif %}>
+      {{ section.settings.text }}
+    </a>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Announcement text",
+      "default": "🎉 50% OFF — Flash Sale — Shop Now!"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FFD166"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#1A1A2E"
+    }
+  ]
+}
+{% endschema %}

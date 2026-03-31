@@ -1,0 +1,162 @@
+<section class="section-padding" style="min-height:100vh;display:flex;align-items:center;padding-top:80px;position:relative;overflow:hidden;">
+  <div class="paw-decoration float-slow" style="top:15%;left:8%;">🐾</div>
+  <div class="paw-decoration float-med" style="top:40%;right:5%;font-size:28px;">🦴</div>
+
+  <div class="container" style="width:100%;">
+    <div style="display:grid;grid-template-columns:1fr;gap:32px;align-items:center;">
+      <!-- Mobile: images first -->
+      <div class="hero-collage" style="display:flex;justify-content:center;position:relative;min-height:260px;order:1;">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'hero_image' -%}
+            <div style="position:absolute;width:{{ block.settings.size }}%;z-index:{{ forloop.index }};{{ block.settings.position }}" class="float-{% cycle 'slow', 'med', 'slow' %}">
+              <img
+                src="{{ block.settings.image | image_url: width: 600 }}"
+                alt="{{ block.settings.image.alt | default: 'Product' | escape }}"
+                style="width:100%;border-radius:var(--radius);box-shadow:0 12px 40px rgba(0,0,0,0.12);transform:rotate({{ block.settings.rotation }}deg);"
+                loading="eager"
+              >
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <!-- Text -->
+      <div class="hero-text" style="order:2;">
+        {%- if section.settings.badge_text != blank -%}
+          <div style="margin-bottom:12px;" class="hero-sticker">
+            <span class="sticker">{{ section.settings.badge_text }}</span>
+          </div>
+        {%- endif -%}
+
+        <h1 class="heading-xl" id="hero-headline" style="margin-bottom:20px;">
+          {{ section.settings.heading }}
+        </h1>
+
+        <p class="hero-desc" style="color:var(--color-text-muted);font-size:16px;line-height:1.65;max-width:500px;margin-bottom:28px;">
+          {{ section.settings.description }}
+        </p>
+
+        <div class="hero-cta" style="display:flex;flex-wrap:wrap;gap:12px;">
+          {%- if section.settings.button_text != blank -%}
+            <a href="{{ section.settings.button_link }}" class="btn btn--primary">
+              {{ section.settings.button_text }}
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          {%- endif -%}
+          {%- if section.settings.secondary_text != blank -%}
+            <a href="{{ section.settings.secondary_link }}" class="btn btn--ghost">
+              {{ section.settings.secondary_text }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @media (min-width: 768px) {
+      #shopify-section-{{ section.id }} > section > .container > div {
+        grid-template-columns: 1fr 1fr !important;
+      }
+      #shopify-section-{{ section.id }} .hero-collage { min-height: 500px !important; order: 2 !important; }
+      #shopify-section-{{ section.id }} .hero-text { order: 1 !important; }
+      #shopify-section-{{ section.id }} .hero-desc { font-size: 20px !important; }
+    }
+  </style>
+</section>
+
+{% schema %}
+{
+  "name": "Hero — Playground",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "🎉 50% OFF — Flash Sale"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Happy Dogs Start Here."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Interactive enrichment toys that turn boredom into playtime. Puzzles, lick mats, and treat toys that keep tails wagging."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Explore Products"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_text",
+      "label": "Secondary button text",
+      "default": "How It Works"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hero_image",
+      "name": "Floating Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "label": "Size (%)",
+          "min": 20,
+          "max": 80,
+          "step": 5,
+          "default": 50
+        },
+        {
+          "type": "text",
+          "id": "position",
+          "label": "CSS position (e.g. top:5%;left:5%)",
+          "default": "top:5%;left:5%"
+        },
+        {
+          "type": "range",
+          "id": "rotation",
+          "label": "Rotation (degrees)",
+          "min": -15,
+          "max": 15,
+          "step": 1,
+          "default": -6
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero — Playground",
+      "blocks": [
+        { "type": "hero_image" },
+        { "type": "hero_image" },
+        { "type": "hero_image" }
+      ]
+    }
+  ]
+}
+{% endschema %}

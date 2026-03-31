@@ -1,0 +1,35 @@
+<footer class="footer">
+  <div class="footer__inner">
+    <span class="footer__logo">🐾 {{ shop.name }}™</span>
+    <div class="footer__links">
+      {%- for link in section.settings.menu.links -%}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- endfor -%}
+      {%- if settings.social_instagram != blank -%}
+        <a href="https://instagram.com/{{ settings.social_instagram | remove: '@' }}" target="_blank" rel="noopener">Instagram</a>
+      {%- endif -%}
+      <span>·</span>
+      <span>{{ section.settings.tagline }}</span>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Footer menu",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Made with 🧡 for dogs everywhere"
+    }
+  ]
+}
+{% endschema %}

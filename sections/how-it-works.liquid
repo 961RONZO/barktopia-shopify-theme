@@ -1,0 +1,99 @@
+<section style="position:relative;background:{{ section.settings.bg_color }};padding:56px 0;overflow:hidden;">
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <path d="M0,80 C360,30 720,70 1080,20 C1200,10 1340,40 1440,25 L1440,80 Z" fill="{{ section.settings.bg_color }}"/>
+    </svg>
+  </div>
+
+  <div class="container" style="position:relative;z-index:1;">
+    <div style="text-align:center;margin-bottom:40px;">
+      <h2 class="heading-lg animate-title" style="color:{{ section.settings.text_color }};">
+        {{ section.settings.heading }}
+      </h2>
+    </div>
+
+    <div class="animate-stagger" style="display:grid;grid-template-columns:1fr;gap:24px;">
+      {%- for block in section.blocks -%}
+        <div style="text-align:center;">
+          <div style="width:64px;height:64px;margin:0 auto 16px;background:{{ section.settings.accent_color }};border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);">
+            <span style="font-family:var(--font-heading);color:var(--color-text);font-size:24px;font-weight:700;">{{ forloop.index }}</span>
+          </div>
+          <h3 style="font-family:var(--font-heading);font-weight:600;font-size:18px;color:{{ section.settings.text_color }};margin-bottom:8px;">{{ block.settings.title }}</h3>
+          <p style="font-size:14px;color:{{ section.settings.text_color }};opacity:0.6;line-height:1.65;max-width:300px;margin:0 auto;">{{ block.settings.description }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <style>
+    @media (min-width: 768px) {
+      #shopify-section-{{ section.id }} > section { padding: 100px 0; }
+      #shopify-section-{{ section.id }} .animate-stagger { grid-template-columns: repeat({{ section.blocks.size }}, 1fr) !important; gap: 32px !important; }
+      #shopify-section-{{ section.id }} > section > .container > div:first-child { margin-bottom: 56px !important; }
+      #shopify-section-{{ section.id }} div[style*="width:64px"] { width: 80px !important; height: 80px !important; }
+      #shopify-section-{{ section.id }} div[style*="width:64px"] span { font-size: 30px !important; }
+    }
+  </style>
+</section>
+
+{% schema %}
+{
+  "name": "How It Works",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Easy as 1, 2, 3"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#1B4965"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Step circle color",
+      "default": "#FFD166"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Pick a Toy"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Choose from puzzles, lick mats, foragers, or interactive balls."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works",
+      "blocks": [
+        { "type": "step", "settings": { "title": "Pick a Toy", "description": "Choose from puzzles, lick mats, foragers, or interactive balls. Every dog has a favourite." } },
+        { "type": "step", "settings": { "title": "Fill with Treats", "description": "Add their favourite snacks, kibble, or spreads. The toy does the rest." } },
+        { "type": "step", "settings": { "title": "Watch Them Thrive", "description": "Enriched dogs are happier, calmer, and healthier. You'll see the difference in days." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
