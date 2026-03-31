@@ -9,13 +9,13 @@
         "button_text": "Explore Products",
         "button_link": "/collections/all",
         "secondary_text": "How It Works",
-        "secondary_link": "#shopify-section-how-it-works"
+        "secondary_link": "#shopify-section-how_it_works"
       },
       "blocks": {
         "image_1": { "type": "hero_image", "settings": { "size": 50, "position": "top:5%;left:5%", "rotation": -6 } },
         "image_2": { "type": "hero_image", "settings": { "size": 40, "position": "top:25%;right:5%", "rotation": 3 } },
         "image_3": { "type": "hero_image", "settings": { "size": 35, "position": "bottom:5%;left:15%", "rotation": -3 } }
-      ],
+      },
       "block_order": ["image_1", "image_2", "image_3"]
     },
     "marquee": {
@@ -65,7 +65,7 @@
         "cta_link": "/collections/all"
       }
     },
-    "how-it-works": {
+    "how_it_works": {
       "type": "how-it-works",
       "settings": {
         "heading": "Easy as 1, 2, 3",
@@ -123,5 +123,5 @@
       }
     }
   },
-  "order": ["hero", "marquee", "problem", "products", "how-it-works", "supplement", "trust", "cta"]
+  "order": ["hero", "marquee", "problem", "products", "how_it_works", "supplement", "trust", "cta"]
 }

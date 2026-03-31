@@ -16,13 +16,12 @@
     </div>
 
     <div class="product-grid animate-stagger">
-      {%- assign collection = collections[section.settings.collection] -%}
-      {%- if collection != blank -%}
-        {%- for product in collection.products limit: section.settings.products_count -%}
+      {%- if section.settings.collection != blank -%}
+        {%- for product in collections[section.settings.collection].products limit: section.settings.products_count -%}
           {% render 'product-card', product: product, index: forloop.index %}
         {%- endfor -%}
       {%- else -%}
-        {%- for product in collections['all'].products limit: section.settings.products_count -%}
+        {%- for product in shop.products limit: section.settings.products_count -%}
           {% render 'product-card', product: product, index: forloop.index %}
         {%- endfor -%}
       {%- endif -%}
